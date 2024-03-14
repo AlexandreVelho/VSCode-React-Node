@@ -3,6 +3,7 @@ import HellowWorld from './components/HellowWorld'
 import SayMyName from './components/SayMyName';
 import Pessoa from './components/Pessoa';
 import List from './components/List';
+import Evento from './components/Evento'
 
 function App() {
   const nome = 'Maria'
@@ -11,13 +12,15 @@ function App() {
   function sum(a, b) {
     return a + b
   }
-  const url = "https://via.placeholder.com/150"
+
   return (
     <div className="App">
+      <h1>Testando Eventos</h1>
+      <Evento />
+
       <h2>Alterando o JSX</h2>
       <p>Olá, {newName}</p>
       <p>Soma: {sum(1, 2)}</p>
-      <img src={url} alt="Minha Imagem" />
       <HellowWorld />
       <SayMyName nome="Matheus" />
       <SayMyName nome="João" />
