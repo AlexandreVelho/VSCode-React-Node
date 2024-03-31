@@ -5,8 +5,11 @@ import Pessoa from './components/Pessoa';
 import List from './components/List';
 import Evento from './components/Evento'
 import Form from './components/Form'
+import Condicional from './components/Condicional';
+import OutraLista from './components/OutraLista';
 
 function App() {
+  const meusItens = []
   const nome = 'Maria'
   const name = 'Matheus'
   const newName = name.toLocaleUpperCase()
@@ -35,6 +38,10 @@ function App() {
         foto="https://via.placeholder.com/150"
       />
       <List />
+      <h1>Renderizando Condicional</h1>
+      <Condicional />
+      <h1>Renderização de Listas</h1>
+      <OutraLista itens={meusItens} />
     </div>
   );
 }
