@@ -7,15 +7,17 @@ import Evento from './components/Evento';
 import Form from './components/Form';
 import Condicional from './components/Condicional';
 import OutraLista from './components/OutraLista';
-import SeuNome from './components/SeuNome'; // Removi o ponto extra antes de /components
-import { useState } from 'react';
+import SeuNome from './components/SeuNome';
 import Saudacao from './components/Saudacao';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import Home from './pages/Home';
+import Empresa from './pages/Empresa'; // Corrigi o nome do componente importado
+import Contato from './pages/Contato'; // Corrigi o nome do componente importado
+import { useState } from 'react';
 
 function App() {
-  const [nome, setNome] = useState(); // Aqui está a declaração correta
-
-  const meusItens = []; // Declaração da lista vazia
-
+  const [nome, setNome] = useState();
+  const meusItens = [];
   const name = 'Matheus';
   const newName = name.toLocaleUpperCase();
 
@@ -24,34 +26,32 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <h1>Testando Eventos</h1>
-      <Evento numero="1" />
-      <Evento numero="2" />
-      <Form />
-
-      <h2>Alterando o JSX</h2>
-      <p>Olá, {newName}</p>
-      <p>Soma: {sum(1, 2)}</p>
-      <HellowWorld />
-      <SayMyName nome="Matheus" />
-      <SayMyName nome="João" />
-      <SayMyName nome={nome} />
-      <Pessoa
-        nome="Rodrigo"
-        idade="28"
-        profissao="Programador"
-        foto="https://via.placeholder.com/150"
-      />
-      <List />
-      <h1>Renderizando Condicional</h1>
-      <Condicional />
-      <h1>Renderização de Listas</h1>
-      <OutraLista itens={meusItens} />
-      <h1>State Lift</h1>
-      <SeuNome setNome={setNome} />
-      <Saudacao nome={nome} />
-    </div>
+    <Router>
+      <div>
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/empresa">Empresa</Link>
+          </li>
+          <li>
+            <Link to="/contato">Contato</Link>
+          </li>
+        </ul>
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route path="/empresa">
+            <Empresa />
+          </Route>
+          <Route path="/contato">
+            <Contato />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
