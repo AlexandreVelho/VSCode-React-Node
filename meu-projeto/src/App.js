@@ -1,20 +1,26 @@
 import './App.css';
-import HellowWorld from './components/HellowWorld'
+import HellowWorld from './components/HellowWorld';
 import SayMyName from './components/SayMyName';
 import Pessoa from './components/Pessoa';
 import List from './components/List';
-import Evento from './components/Evento'
-import Form from './components/Form'
+import Evento from './components/Evento';
+import Form from './components/Form';
 import Condicional from './components/Condicional';
 import OutraLista from './components/OutraLista';
+import SeuNome from './components/SeuNome'; // Removi o ponto extra antes de /components
+import { useState } from 'react';
+import Saudacao from './components/Saudacao';
 
 function App() {
-  const meusItens = []
-  const nome = 'Maria'
-  const name = 'Matheus'
-  const newName = name.toLocaleUpperCase()
+  const [nome, setNome] = useState(); // Aqui está a declaração correta
+
+  const meusItens = []; // Declaração da lista vazia
+
+  const name = 'Matheus';
+  const newName = name.toLocaleUpperCase();
+
   function sum(a, b) {
-    return a + b
+    return a + b;
   }
 
   return (
@@ -42,6 +48,9 @@ function App() {
       <Condicional />
       <h1>Renderização de Listas</h1>
       <OutraLista itens={meusItens} />
+      <h1>State Lift</h1>
+      <SeuNome setNome={setNome} />
+      <Saudacao nome={nome} />
     </div>
   );
 }
